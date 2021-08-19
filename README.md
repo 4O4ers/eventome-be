@@ -67,3 +67,28 @@ We agreed on making Hamza Ahmad and Adham maintain and handle reviewing pull req
 2. This idea aims to allow the user to add as many tasks as he wants/ he will be able to check his progress and get notifications or reminders for a specific task based on the schedule he puts for himself/ the user will be able to update or modify the tasks even after they add them at any time.
 
 3. The MVP for this idea is that the user be able to add tasks with ease/ to receive reminders to notify him about the current and upcoming tasks / and to allow the user to update and modify a task with ease.
+
+--------------------------
+
+## APIs
+
+Auth0 - Stytch - Eventbrite - Picatic - SeatGeek - Full Contact - Places API - Gmail - Google Analytics - mailgun - Abstract IP Geolocation - apilayer ipstack - Battuta - Geoapify - Geocoding.ai - Google Maps - OpenStreetMap - RoadGoat Cities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
