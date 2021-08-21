@@ -2,57 +2,32 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-  email: String,
-  name: String,
-  picture: String,
+  email: { type: String, default: 'no email' },
+  name: { type: String, default: 'no name' },
+  picture: { type: String, default: '' },
   favorites: Array,
+  created: Array,
+  ratings: Array,
+  attending: Array,
+
 });
 
 const userModel = mongoose.model("user", UserSchema);
 
 const event = new mongoose.Schema({
-  title: String,
-  picture: String,
-  description: String,
-  time: String,
-  location: String,
+  title: { type: String, default: 'no title' },
+  picture: { type: String, default: '' },
+  description: { type: String, default: 'no description provided' },
+  time: { type: String, default: '00-00-00T00:00:00' },
+  location: { type: String, default: 'no location provided' },
   favorites: Array,
   ratings: Array,
   attending: Array,
   category: Array,
-  isPublic: Boolean,
+  isPublic: { type: Boolean, default: true },
   commnets: Array,
 });
+
 const eventModel = mongoose.model("event", event);
-const seedEvent=()=>{
-    const newEvent=new eventModel({
-      title: 'adham',
-  picture: 'adham',
-  description: 'adham',
-  time: 'adham',
-  location:'adham',
-  favorites: 'adham',
-  ratings: 'adham',
-  attending: 'adham',
-  category: 'adham',
-  isPublic: 'adham',
-  commnets: 'adham'
-    })
-    newEvent.save();
-    console.log(newEvent);
-  }
-  
 
-module.exports = { userModel, eventModel ,seedEvent};
-
-// {title,
-//   picture,
-//   description,
-//   time,
-//   location,
-//   favorites,
-//   ratings,
-//   attending,
-//   category,
-//   isPublic,
-//   commnets}
+module.exports = { userModel, eventModel };
