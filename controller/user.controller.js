@@ -1,5 +1,5 @@
 "use strict";
-const {userModel,favoritesEventModel} = require("../model/schema");
+const {userModel,eventModel,seedEvent} = require("../model/schema");
 
 const getUser = (req, res) => {
   res.send("Hello World");
@@ -16,7 +16,7 @@ const postUser = (req, res) => {
   res.send(data);
 };
 const eventHander = (req, res) => {
-  let dataEvent = new favoritesEventModel({
+  let dataEvent = new eventModel({
     title: req.body.title,
     picture: req.body.picture,
     description: req.body.description,
@@ -28,5 +28,17 @@ const eventHander = (req, res) => {
   dataEvent.save()
   res.send(data)
 };
-
-module.exports = { getUser, eventHander ,postUser };
+const getEvents=(req,res)=>{
+  seedEvent();
+  eventModel.find({},(err,result)=>{
+    if(err){
+      res.status(404).send("Ooops")
+    }else{
+      console.log(result)
+      res.send(result)
+    }
+  })
+  
+}
+  
+module.exports = { getUser, eventHander ,postUser,getEvents };
