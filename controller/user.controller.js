@@ -25,6 +25,8 @@ const eventHander = (req, res) => {
     favorites: [],
     ratings: [],
   });
+  dataEvent.save()
+  res.send(data)
 };
 
 module.exports = { getUser, eventHander ,postUser };

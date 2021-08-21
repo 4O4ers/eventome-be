@@ -17,8 +17,9 @@ const favoritesEvent = new mongoose.Schema({
   time: String,
   location: String,
   favorites:Array,
-  ratings:Array
+  ratings:Array,
+  
 });
-const favoritesEventModel = mongoose.model("favarotEvent", UserSchema);
+const favoritesEventModel = mongoose.model("favarotEvent",favoritesEvent );
 
 module.exports = { userModel, favoritesEventModel };
