@@ -16,6 +16,7 @@ const getUser = (req, res) => {
 
 const addUser = (req, res) => {
   let bodyData = req.body;
+  console.log(bodyData);
   let user = new userModel({ ...bodyData });
   user.save().then(val => {
     userModel.find({}, (err, result) => {
@@ -42,7 +43,7 @@ const updateUser = (req, res) => {
         if (err) {
           res.status(404).send("Ooops")
         } else {
-          console.log(result)
+    
           res.send(result)
         }
       })
@@ -53,15 +54,26 @@ const updateUser = (req, res) => {
 const addEvent = (req, res) => {
   let bodyData = req.body;
   let event = new eventModel({ ...bodyData });
-  event.save();
-  res.send(event); //sends the last one added 
+  event.save().then(val => {
+    eventModel.find({}, (err, result) => {
+      if (err) {
+        res.status(404).send("Ooops")
+      } else {
+  
+        res.send(result)
+      }
+    }) 
+  })
+  .catch(err => res.send(err));
+  //sends the last one added 
 };
+
 const getEvents = (req, res) => {
   eventModel.find({}, (err, result) => {
     if (err) {
       res.status(404).send("Ooops")
     } else {
-      console.log(result)
+
       res.send(result)
     }
   })
@@ -79,7 +91,7 @@ const deleteEvent = (req, res) => {
         if (err) {
           res.status(404).send("Ooops")
         } else {
-          console.log(result)
+    
           res.send(result)
         }
       })
@@ -90,6 +102,7 @@ const deleteEvent = (req, res) => {
 const updateEvent = (req, res) => {
   let id = req.params.id;
   let body = req.body;
+  console.log(body);
   eventModel.findByIdAndUpdate({ _id: id }, { ...body }, (err, response) => {
     if (err) {
       res.send(err);
@@ -99,7 +112,7 @@ const updateEvent = (req, res) => {
         if (err) {
           res.status(404).send("Ooops")
         } else {
-          console.log(result)
+    
           res.send(result)
         }
       })

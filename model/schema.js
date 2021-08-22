@@ -18,14 +18,15 @@ const event = new mongoose.Schema({
   title: { type: String, default: 'no title' },
   picture: { type: String, default: '' },
   description: { type: String, default: 'no description provided' },
-  time: { type: String, default: '00-00-00T00:00:00' },
-  location: { type: String, default: 'no location provided' },
-  favorites: Array,
-  ratings: Array,
+  time: { type: Array, default: ['00:00:00', '00-00-00'] },
+  address: { type: Object, default: {lat: 0, lng: 0} },
+  favorites: { type: String, default: '' },
+  ratings: { type: Array, default: [] },//array of objects consisting of the user id who has rated, and the rating out of 10 [{_id: 45441535413541354, rating: 8}]
   attending: Array,
   category: Array,
   isPublic: { type: Boolean, default: true },
   commnets: Array,
+  
 });
 
 const eventModel = mongoose.model("event", event);
