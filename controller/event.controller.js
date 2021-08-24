@@ -115,6 +115,10 @@ const updateUserAttending = (req, res) => {
 }
 
 ///////////////////////////////////////////// event methods /////////////////////////////////////////////
+
+// const oneEvent = (req, res) => {
+//   let id = req.query.id;
+// }
 const getAllEvents = (res) => {
   eventModel.find({}, (err, result) => {
     if (err) {
