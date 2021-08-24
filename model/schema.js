@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   email: { type: String, default: 'no email' },
   name: { type: String, default: 'no name' },
-  picture: { type: String, default: '' },
-  favorites: Array,
-  created: Array,
-  ratings: Array,
-  attending: Array,
+  picture: { type: String, default: 'https://picsum.photos/200' },
+  favorites: [String],
+  created: [String],
+  ratings: [{id: String, rating: Number}],
+  attending: [String],
 
 });
 
@@ -20,13 +20,13 @@ const event = new mongoose.Schema({
   description: { type: String, default: 'no description provided' },
   time: { type: Array, default: ['00:00:00', '00-00-00'] },
   address: { type: Object, default: {lat: 0, lng: 0} },
-  favorites: { type: String, default: '' },
-  ratings: { type: Array, default: [] },//array of objects consisting of the user id who has rated, and the rating out of 10 [{_id: 45441535413541354, rating: 8}]
-  attending: Array,
-  category: Array,
+  favorites: [String],
+  ratings: [{email: String, rating: Number}],
+  attending: [String],
+  category: [String],
   isPublic: { type: Boolean, default: true },
-  commnets: Array,
-  
+  comments: [{email: String, comment: String}],
+  creator: String,
 });
 
 const eventModel = mongoose.model("event", event);

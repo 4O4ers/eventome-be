@@ -20,7 +20,18 @@ const {
   deleteEvent,
   updateEvent,
   addUser,
-  updateUser
+  updateUser,
+  updateEventFavorites,
+  updateEventRatings,
+  updateEventAttending,
+  updateEventCategory,
+  updateEventComments,
+  updateUserFavorites,
+  updateUserCreated,
+  updateUserRatings,
+  updateUserAttending,
+  getOneUser,
+  getOnSearch
 } = require('./controller/event.controller');
 const PORT = process.env.PORT;
 
@@ -35,6 +46,20 @@ app.post('/event', addEvent);
 app.delete('/event/:id', deleteEvent);
 app.put('/event/:id', updateEvent );
 
+app.put('/event/favorites/:id', updateEventFavorites);
+app.put('/event/ratings/:id', updateEventRatings);
+app.put('/event/attending/:id', updateEventAttending);
+app.put('/event/category/:id', updateEventCategory);
+app.put('/event/comments/:id', updateEventComments);
+
+
+app.put('/user/favorites/:id', updateUserFavorites);
+app.put('/user/created/:id', updateUserCreated);
+app.put('/user/ratings/:id', updateUserRatings);
+app.put('/user/attending/:email', updateUserAttending);
+app.get('/user/one/:id', getOneUser)
+
+app.get('/event/search', getOnSearch)
 app.listen(PORT, () => {
   console.log(`working in port ${PORT}`);
 });
