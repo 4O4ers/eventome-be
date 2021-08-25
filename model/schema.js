@@ -16,17 +16,25 @@ const userModel = mongoose.model("user", UserSchema);
 
 const event = new mongoose.Schema({
   title: { type: String, default: 'no title' },
-  picture: { type: String, default: '' },
+  picture: { type: String, default: 'https://picsum.photos/200/300' },
   description: { type: String, default: 'no description provided' },
   time: { type: Array, default: ['00:00:00', '00-00-00'] },
+  date: {type: String, default: '00-00-0000'},
   address: { type: Object, default: {lat: 0, lng: 0} },
+  // lat: {type: Number, default: 35 },
+  // lng : {type: Number, default: 35 },
   favorites: [String],
   ratings: [{email: String, rating: Number}],
   attending: [String],
-  category: [String],
+  categories: [String],
   isPublic: { type: Boolean, default: true },
   comments: [{email: String, comment: String}],
   creator: String,
+  showHeart: {type : Boolean, default: true},
+  showStar: {type : Boolean, default: true},
+  showUpdateEvent : {type : Boolean, default: false},
+  showDeleteEvent : {type : Boolean, default: false},
+  showDetailsEvent: {type : Boolean, default: true},
 });
 
 const eventModel = mongoose.model("event", event);
