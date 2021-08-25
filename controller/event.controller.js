@@ -217,10 +217,10 @@ const updateEventAttending = (req, res) => {
 
 const updateEventCategory = (req, res) => {
   let id = req.params.id;
-  let body = req.body.category;
+  let body = req.body.categories;
   console.log(body);
   eventModel.updateOne(
-    { _id: id }, { $addToSet: { category: [...body] } },
+    { _id: id }, { $addToSet: { categories: body} },
     (err, result) => {
       if (err) { res.send(err) }
       else {
@@ -235,7 +235,7 @@ const updateEventComments = (req, res) => {
   let body = req.body.comments;
   console.log(body);
   eventModel.updateOne(
-    { _id: id }, { $addToSet: { comments: [...body] } },
+    { _id: id }, { $addToSet: { comments: body } },
     (err, result) => {
       if (err) { res.send(err) }
       else {
