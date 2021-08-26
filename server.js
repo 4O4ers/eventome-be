@@ -5,7 +5,7 @@ app.use(cors());
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/eventome', {
+mongoose.connect('mongodb://HamzaAhmad:eventome2021@cluster0-shard-00-00.129zx.mongodb.net:27017,cluster0-shard-00-01.129zx.mongodb.net:27017,cluster0-shard-00-02.129zx.mongodb.net:27017/eventome?ssl=true&replicaSet=atlas-meneia-shard-0&authSource=admin&retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -35,6 +35,9 @@ const {
 } = require('./controller/event.controller');
 const PORT = process.env.PORT;
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Eventome!')
+})
 //user methods
 app.get('/user', getUser);
 app.post('/user', addUser);
